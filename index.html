@@ -47,6 +47,10 @@
                     </a>
                     <a href="#contacto" class="hidden md:inline-block bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-full font-medium transition shadow-lg transform hover:scale-105 text-sm">
                         Contactar
+                    <button id="langToggle" onclick="toggleLanguage()" class="ml-3 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors font-medium shadow-sm flex items-center gap-2">
+                        <i class="fas fa-globe"></i>
+                        <span id="langText">EN</span>
+                    </button>
                     </a>
                 </div>
             </div>
@@ -294,5 +298,186 @@
             </div>
         </div>
     </footer>
+    
+<script>
+// Traducciones
+const translations = {
+    es: {
+        // Navbar
+        brandName: 'Inversiones Florida',
+        contactBtn: 'Contactar',
+        
+        // Hero Section
+        badge: 'OPORTUNIDAD "CASH COW"',
+        heroTitle: 'Multifamiliar de Alto Rendimiento',
+        heroLocation: 'en Clewiston, FL',
+        heroSubtitle: 'Generando ingresos desde el primer día.',
+        heroUnits: '6 Unidades Activas + 4 en Desarrollo.',
+        price: 'Precio',
+        income: 'Ingreso (Est)',
+        capRate: 'Cap Rate (Est)',
+        
+        // Property Summary
+        summaryTitle: 'Resumen de la Propiedad',
+        summaryText: 'Excelente oportunidad de inversión en',
+        summaryDetails: 'Propiedad establecida operando con alta ocupación. Ideal para inversionistas buscando retorno inmediato y potencial de apreciación.',
+        address: '1161 Lakeview Ave',
+        totalUnits: 'Unidades Totales',
+        occupiedReady: 'Ocupadas / Listas',
+        furnished: 'Totalmente Amuebladas',
+        
+        // Potential
+        potentialTitle: 'Potencial de Plusvalía',
+        potentialText: 'La propiedad cuenta con',
+        potentialUnits: 'unidades adicionales (efficiencies)',
+        potentialConstruction: 'en proceso de construcción. Potencial de aumentar ingresos significativamente.',
+        unitsToFinish: 'Unidades por terminar',
+        extraIncome: 'Potencial Mensual Extra',
+        conservative: 'Estimado conservador. Requiere finalización de obra.',
+        
+        // Financial Analysis
+        analysisTitle: 'Análisis Financiero',
+        annualFigures: 'Cifras Estimadas Anuales',
+        incomeBreakdown: 'Desglose de Ingresos',
+        mainUnits: 'Unidades Principales',
+        standardUnits: 'Unidades Estándar',
+        economicUnit: 'Unidad Económica',
+        basicUnit: 'Unidad Básica',
+        monthlyTotal: 'Total Mensual (Actual)',
+        operatingExpenses: 'Gastos Operativos',
+        taxesAnnual: 'Impuestos (Anual)',
+        electricityAvg: 'Luz (Mes prom.)',
+        internet: 'Internet (Mes)',
+        noteAllInclusive: 'Renta "Todo Incluido". Facilita el cobro.',
+        
+        // Gallery
+        galleryTitle: 'Galería Visual',
+        panoramicView: 'Vista Panorámica',
+        generalView: 'Vista General',
+        generalViewDesc: 'Amplio terreno y estructuras existentes.',
+        modelRoom: 'CUARTO MODELO',
+        modelRoomTitle: 'Cuarto Modelo',
+        privateBath: 'BAÑO PRIVADO',
+        bathroom: 'Baño',
+        inConstruction: 'EN CONSTRUCCIÓN',
+        constructionTitle: 'En Construcción',
+        
+        // Contact
+        contactTitle: '¿Interesado en Invertir?',
+        contactText: 'Trato directo. Sin intermediarios.',
+        callNow: 'Llamar Ahora',
+        email: 'Email',
+        
+        // Footer
+        footerText: '© 2024 Venta de Propiedad - Clewiston, FL.',
+        footerOr: '|'
+    },
+    en: {
+        // Navbar
+        brandName: 'Florida Investments',
+        contactBtn: 'Contact',
+        
+        // Hero Section
+        badge: '"CASH COW" OPPORTUNITY',
+        heroTitle: 'High-Yield Multifamily',
+        heroLocation: 'in Clewiston, FL',
+        heroSubtitle: 'Generating income from day one.',
+        heroUnits: '6 Active Units + 4 in Development.',
+        price: 'Price',
+        income: 'Income (Est)',
+        capRate: 'CAP Rate (Est)',
+        
+        // Property Summary
+        summaryTitle: 'Property Summary',
+        summaryText: 'Excellent investment opportunity at',
+        summaryDetails: 'Established property operating with high occupancy. Ideal for investors seeking immediate return and appreciation potential.',
+        address: '1161 Lakeview Ave',
+        totalUnits: 'Total Units',
+        occupiedReady: 'Occupied / Ready',
+        furnished: 'Fully Furnished',
+        
+        // Potential
+        potentialTitle: 'Appreciation Potential',
+        potentialText: 'The property has',
+        potentialUnits: 'additional units (efficiencies)',
+        potentialConstruction: 'under construction. Potential to significantly increase income.',
+        unitsToFinish: 'Units to finish',
+        extraIncome: 'Extra Monthly Potential',
+        conservative: 'Conservative estimate. Requires completion of work.',
+        
+        // Financial Analysis
+        analysisTitle: 'Financial Analysis',
+        annualFigures: 'Estimated Annual Figures',
+        incomeBreakdown: 'Income Breakdown',
+        mainUnits: 'Main Units',
+        standardUnits: 'Standard Units',
+        economicUnit: 'Economic Unit',
+        basicUnit: 'Basic Unit',
+        monthlyTotal: 'Monthly Total (Current)',
+        operatingExpenses: 'Operating Expenses',
+        taxesAnnual: 'Taxes (Annual)',
+        electricityAvg: 'Electricity (Avg/month)',
+        internet: 'Internet (Month)',
+        noteAllInclusive: '"All Inclusive" Rent. Facilitates collection.',
+        
+        // Gallery
+        galleryTitle: 'Visual Gallery',
+        panoramicView: 'Panoramic View',
+        generalView: 'General View',
+        generalViewDesc: 'Large lot and existing structures.',
+        modelRoom: 'MODEL ROOM',
+        modelRoomTitle: 'Model Room',
+        privateBath: 'PRIVATE BATH',
+        bathroom: 'Bathroom',
+        inConstruction: 'UNDER CONSTRUCTION',
+        constructionTitle: 'Under Construction',
+        
+        // Contact
+        contactTitle: 'Interested in Investing?',
+        contactText: 'Direct deal. No intermediaries.',
+        callNow: 'Call Now',
+        email: 'Email',
+        
+        // Footer
+        footerText: '© 2024 Property Sale - Clewiston, FL.',
+        footerOr: '|'
+    }
+};
+
+let currentLang = 'es'; // Idioma por defecto
+
+function toggleLanguage() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    updateContent();
+    document.getElementById('langText').textContent = currentLang === 'es' ? 'EN' : 'ES';
+    localStorage.setItem('preferredLanguage', currentLang);
+}
+
+function updateContent() {
+    const t = translations[currentLang];
+    
+    // Update all text elements with data-i18n attribute
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (t[key]) {
+            element.textContent = t[key];
+        }
+    });
+    
+    // Update HTML title
+    document.title = currentLang === 'es' ? 'Inversión en Clewiston | 1161 Lakeview Ave' : 'Investment in Clewiston | 1161 Lakeview Ave';
+}
+
+// Cargar idioma guardado al iniciar
+window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('preferredLanguage');
+    if (saved && saved !== 'es') {
+        currentLang = saved;
+        updateContent();
+        document.getElementById('langText').textContent = 'ES';
+    }
+});
+</script>
 </body>
 </html>
+
